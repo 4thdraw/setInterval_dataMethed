@@ -6,24 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        body{ margin: 0; padding: 0; }
         #intro{
-                height: 100vh;
+                height: calc(100vh - 100px);/**/
                 display: flex;
                 justify-content: center;
-                align-items: center;
+                align-items:end; /**/
+                background-position: center; /**/
+                background-size: auto 100%;/**/
             }
         #intro button{
             position: relative;
-            width: 100px;
-            height: 100px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            border:0;
+            border:0;            
         }
-        .red{ background-color: red !important;}
-        .green{ background-color: green !important;}
-        .yellow{ background-color: yellow !important;}
-        .active{ border:3px white solid  !important; 
-                 background-color: transparent !important;
+        .btns{
+            transform: translateY(150%); /**/
+        }
+        .red{ background-image: url(img/1.gif);}/**/
+        .green{ background-image: url(img/1.gif);}/**/
+        .yellow{ background-image: url(img/3.jpg);}/**/
+        .active{  
+                 background-color: red !important;
                  color:white !important
                 }
     </style>
@@ -33,9 +39,9 @@
 			  crossorigin="anonymous"></script>
     <script>
         $(document).ready(function(){   
-            let count =1; 
+            let count =0; 
             $("#intro button").click(function(){           
-                $("body").removeClass().addClass($(this).data('c'));              
+                $("#intro").removeClass().addClass($(this).data('c'));              
                 $("#intro button").removeClass('active')
                 $(this).addClass('active');
             }) 
@@ -47,11 +53,11 @@
         })
     </script>
 </head>
-<body class="green">   
-    <section id="intro">
+<body >   
+    <section id="intro" class="red">
       <div class="btns">
-        <button data-c="red" >red</button>
-        <button data-c="green" class="active">green</button>
+        <button data-c="red" class="active">red</button>
+        <button data-c="green" >green</button>
         <button data-c="yellow">blue</button>
       </div>
     </section>
