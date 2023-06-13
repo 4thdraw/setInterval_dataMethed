@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #intro{
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        #intro button{
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border:0;
+        }
+        .red{ background-color: red !important;}
+        .green{ background-color: green !important;}
+        .yellow{ background-color: yellow !important;}
+        .active{ border:3px white solid  !important; 
+                 background-color: transparent !important;
+                 color:white !important
+                }
+    </style>
+    <script
+			  src="https://code.jquery.com/jquery-2.2.4.js"
+			  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+			  crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){   
+            let count =1; 
+            $("#intro button").click(function(){           
+                $("body").removeClass().addClass($(this).data('c'));              
+                $("#intro button").removeClass('active')
+                $(this).addClass('active');
+            }) 
+            setInterval(function(){
+              count++; 
+              count %= $("#intro button").length;
+              $("#intro button").eq(count).click(); 
+            }, 3000)
+        })
+    </script>
+</head>
+<body class="green">   
+    <section id="intro">
+      <div class="btns">
+        <button data-c="red" >red</button>
+        <button data-c="green" class="active">green</button>
+        <button data-c="yellow">blue</button>
+      </div>
+    </section>
+  
+   
+</body>
+</html>
